@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { use } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 const Register = () => {
+    const { createUser } = use(AuthContext)
+
     const handleRegister = (e) => {
         console.log('btn clicked');
         e.preventDefault()
         const form = e.target;
         const data = new FormData(form)
-        const dataObj = Object.fromEntries(data.entries())
-        console.log(dataObj);
+        const { email, password, ...rest } = Object.fromEntries(data.entries())
+        createUser(email, password)
+            .then(() => {
+                fetch('http://localhost:3000/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(rest)
+                })
+                    .then(res => res.json())
+                    .then(data => console.log(data))
+            })
+            .catch(error => console.log(error))
+
     }
     return (
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
