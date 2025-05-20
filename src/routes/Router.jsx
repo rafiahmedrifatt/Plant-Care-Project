@@ -3,6 +3,10 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
+import AddPlants from "../pages/AddPlants";
+import AllPlants from "../pages/AllPlants";
+import PlantDetails from "../pages/PlantDetails";
+import MyPlant from "../pages/MyPlant";
 
 
 export const router = createBrowserRouter([
@@ -15,13 +19,39 @@ export const router = createBrowserRouter([
                 Component: Home
             },
             {
-                path: '/login',
+                path: 'login',
                 Component: Login
             },
             {
-                path: '/register',
+                path: 'register',
                 Component: Register
+            },
+            {
+                path: 'addPlants',
+                Component: AddPlants
+            },
+            {
+                path: 'allPlants',
+                Component: AllPlants,
+                loader: () => fetch('http://localhost:3000/plants')
+            },
+            {
+                path: 'plant/:id',
+                Component: PlantDetails,
+                loader: ({ params }) => fetch(`http://localhost:3000/plant/${params.id}`)
+            },
+            {
+                path: 'myPlants/:email',
+                Component: MyPlant,
+                loader: ({ params }) => fetch(`http://localhost:3000/myPlants/${params.email}`)
             }
         ]
     }
 ])
+
+
+
+
+
+
+

@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../../context/AuthContext';
 
 const Navbar = () => {
+    const { user } = use(AuthContext)
     const navLinks =
         <>
             <Link to="/">Home</Link>
-            <Link to="/">All Plants</Link>
-            <Link to="/">Add Plants</Link>
-            <Link to="/">My Plants</Link>
+            <Link to="/allPlants">All Plants</Link>
+            <Link to="/addPlants">Add Plants</Link>
+            <Link to={`/myPlants/${user?.email}`}>My Plants</Link>
         </>
 
     return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Login = () => {
     return (
@@ -11,6 +12,7 @@ const Login = () => {
                     <input type="password" className="input" placeholder="Password" />
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button className="btn btn-neutral mt-4">Login</button>
+                    <p>Don't have account? <Link to="/register">Register Now</Link></p>
                 </from>
                 <div>
                     {/* google signup button */}
