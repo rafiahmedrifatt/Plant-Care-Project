@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 
 const MyPlant = () => {
     const myPlantsData = useLoaderData()
@@ -38,7 +38,7 @@ const MyPlant = () => {
                             </td>
                             <td>{plant.lastWateredDate}</td>
                             <th>
-                                <button className="btn btn-ghost btn-xs">Update</button>
+                                <Link to={`/update/${plant._id}`} className="btn btn-ghost btn-xs">Update</Link>
                                 <button className="btn btn-ghost btn-xs">Delete</button>
                             </th>
                         </tr>)
