@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { use } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 const AddPlants = () => {
+    const { user } = use(AuthContext)
+    console.log(user?.email);
     const handlePlantSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -47,10 +50,10 @@ const AddPlants = () => {
             <input type="text" name='health' className="input w-full" placeholder="Health Status" />
 
             <label className="label" >Email</label>
-            <input type="email" className="input w-full" name='email' value="rafiahmed0471@gmail.com" readOnly />
+            <input type="email" className="input w-full" name='email' value={user?.email} readOnly />
 
             <label className="label" >Name</label>
-            <input type="text" className="input w-full" name='name' value="rafi ahmed rifat" readOnly />
+            <input type="text" className="input w-full" name='name' defaultValue={user?.displayName} readOnly />
 
             <button type='submit' className='btn btn-primary mt-5'>Add Plant</button>
         </form>
