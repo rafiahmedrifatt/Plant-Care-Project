@@ -15,19 +15,20 @@ const NewPlants = ({ dataPromise }) => {
             <div className='w-8/12 mx-auto grid grid-cols-2 gap-10'>
                 {
                     plants.map(data =>
-                        <div key={data._id} className="card card-side bg-base-100 shadow-sm">
-                            <figure className='w-[50%]'>
+                        <div key={data._id} className="card card-side shadow-sm">
+                            <figure className='md:w-40'>
                                 <img
                                     src={data.photo}
                                     alt="Movie" />
                             </figure>
                             <div className="card-body">
-                                <h2 className="card-title">{data.plantName}</h2>
-                                <p>{data.category}</p>
-                                <p>{data.lastWateredDate}</p>
-                                <p>{data.nextWateringDate}</p>
-                                <p>{data.health}</p>
-                                <Link to={`plant/${data._id}`}>details</Link>
+                                <h2 className="card-title">Name : {data.plantName}</h2>
+                                <p>Category : {data.category}</p>
+                                <p>Health : {data.health}</p>
+                                <p>Added By : {data.name ? data.name : 'Rafi Ahmed Rifat'}</p>
+                                <div>
+                                    <Link to={`plant/${data._id}`} className='btn btn-success'>details</Link>
+                                </div>
                             </div>
                         </div>)
                 }

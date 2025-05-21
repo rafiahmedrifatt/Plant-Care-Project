@@ -4,7 +4,7 @@ const NewLetter = () => {
     return (
         <div className="h-[50vh] flex flex-col items-center justify-center gap-10 rounded-xl mt-20">
             <div>
-                <h1 className="text-3xl font-bold text-accent">
+                <h1 className="text-3xl font-bold text-green-700">
                     Subscribe to Newsletter
                 </h1>
             </div>

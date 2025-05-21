@@ -53,7 +53,7 @@ const AddPlants = () => {
             <input type="email" className="input w-full" name='email' value={user?.email} readOnly />
 
             <label className="label" >Name</label>
-            <input type="text" className="input w-full" name='name' defaultValue={user?.displayName} readOnly />
+            <input type="text" className="input w-full" name='name' defaultValue={user?.displayName} />
 
             <button type='submit' className='btn btn-primary mt-5'>Add Plant</button>
         </form>

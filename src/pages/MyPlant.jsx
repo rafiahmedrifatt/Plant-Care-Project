@@ -3,6 +3,11 @@ import { Link, useLoaderData } from 'react-router';
 
 const MyPlant = () => {
     const myPlantsData = useLoaderData()
+    const handleDelete = (id) => {
+        fetch(`http://localhost:3000/plant/${id}`, {
+            method: 'DELETE'
+        }).then(res => res.json()).then(data => console.log(data))
+    }
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -38,7 +43,7 @@ const MyPlant = () => {
                             <td>{plant.lastWateredDate}</td>
                             <th>
                                 <Link to={`/update/${plant._id}`} className="btn btn-ghost btn-xs">Update</Link>
-                                <button className="btn btn-ghost btn-xs">Delete</button>
+                                <button onClick={() => handleDelete(plant._id)} className="btn btn-ghost btn-xs">Delete</button>
                             </th>
                         </tr>)
                     }
