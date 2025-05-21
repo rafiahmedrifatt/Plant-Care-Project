@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { Link } from 'react-router';
 
 const Register = () => {
     const { createUser, user } = use(AuthContext)
@@ -27,7 +28,7 @@ const Register = () => {
 
     }
     return (
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-20">
             <div className="card-body">
                 <form onSubmit={handleRegister} className="fieldset">
                     <label className="label">Name</label>
@@ -40,6 +41,7 @@ const Register = () => {
                     <input type="password" name='password' className="input" placeholder="Password" />
                     <button type='submit' className="btn btn-neutral mt-4">Register</button>
                 </form>
+                <p>Already Registered? <Link to="/login">Login Now</Link></p>
             </div>
         </div>
     );

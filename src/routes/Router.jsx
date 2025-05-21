@@ -9,6 +9,7 @@ import PlantDetails from "../pages/PlantDetails";
 import MyPlant from "../pages/MyPlant";
 import Update from "../pages/Update";
 import Loader from "../components/loader/Loader";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'addPlants',
-                Component: AddPlants
+                element: <PrivateRoute><AddPlants /></PrivateRoute>
             },
             {
                 path: 'allPlants',
@@ -40,19 +41,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'plant/:id',
-                Component: PlantDetails,
+                element: <PrivateRoute><PlantDetails /></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:3000/plant/${params.id}`),
                 HydrateFallback: Loader
             },
             {
                 path: 'myPlants/:email',
-                Component: MyPlant,
+                element: <PrivateRoute><MyPlant /></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:3000/myPlants/${params.email}`),
                 HydrateFallback: Loader
             },
             {
                 path: 'update/:id',
-                Component: Update,
+                element: <PrivateRoute><Update /></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:3000/plant/${params.id}`),
                 HydrateFallback: Loader
             }

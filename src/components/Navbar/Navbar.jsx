@@ -1,9 +1,10 @@
 import React, { use } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
-    const { user } = use(AuthContext)
+    const { user, logOut } = use(AuthContext)
     const navLinks =
         <>
             <Link to="/">Home</Link>
@@ -12,8 +13,12 @@ const Navbar = () => {
             <Link to={`/myPlants/${user?.email}`}>My Plants</Link>
         </>
 
+    const handleLogOut = () => {
+        logOut()
+    }
+
     return (
-        <div className="navbar bg-white text-black shadow-sm h-10">
+        <div className="navbar shadow-sm h-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -35,8 +40,32 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login" className="btn">Login</Link>
+                {
+                    user ? <div className='flex gap-5'>
+                        <a
+                            id="my-tooltip-anchor"
+                        >
+
+                            <div className="avatar">
+                                <div className="w-12 rounded-full">
+                                    <img src={user.photoURL ? user.photoURL : "https://img.daisyui.com/images/profile/demo/yellingcat@192.webp"} />
+                                </div>
+                            </div>
+                        </a>
+                        <Tooltip
+                            anchorSelect="#my-tooltip-anchor"
+                            content={user.displayName ? user.displayName : user.email}
+                            place="bottom"
+                        />
+
+                        <button onClick={handleLogOut}>LogOut</button>
+                    </div> :
+                        <button className='btn '>
+                            <Link to="/login">Login</Link> / <Link to="/register">Register</Link>
+                        </button>
+                }
             </div>
+
         </div>
     );
 };
