@@ -2,6 +2,9 @@ import React, { Suspense } from 'react';
 import Banner from '../components/HomeComponents/banner/Banner';
 import NewPlants from '../components/HomeComponents/NewPlants/NewPlants';
 import Loader from '../components/loader/Loader';
+import PrevWork from '../components/HomeComponents/prevWork/PrevWork';
+import TotalWork from '../components/HomeComponents/totalWork/TotalWork';
+import NewLetter from '../components/HomeComponents/newsletter/NewLetter';
 
 const Home = () => {
     const dataPromise = fetch('http://localhost:3000/plants').then(res => res.json())
@@ -11,6 +14,9 @@ const Home = () => {
             <Suspense fallback={Loader}>
                 <NewPlants dataPromise={dataPromise} />
             </Suspense>
+            <PrevWork />
+            <TotalWork />
+            <NewLetter />
         </div>
     );
 };
