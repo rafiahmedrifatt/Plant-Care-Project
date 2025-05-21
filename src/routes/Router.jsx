@@ -8,6 +8,7 @@ import AllPlants from "../pages/AllPlants";
 import PlantDetails from "../pages/PlantDetails";
 import MyPlant from "../pages/MyPlant";
 import Update from "../pages/Update";
+import Loader from "../components/loader/Loader";
 
 
 export const router = createBrowserRouter([
@@ -34,22 +35,26 @@ export const router = createBrowserRouter([
             {
                 path: 'allPlants',
                 Component: AllPlants,
-                loader: () => fetch('http://localhost:3000/plants')
+                loader: () => fetch('http://localhost:3000/plants'),
+                HydrateFallback: Loader
             },
             {
                 path: 'plant/:id',
                 Component: PlantDetails,
-                loader: ({ params }) => fetch(`http://localhost:3000/plant/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:3000/plant/${params.id}`),
+                HydrateFallback: Loader
             },
             {
                 path: 'myPlants/:email',
                 Component: MyPlant,
-                loader: ({ params }) => fetch(`http://localhost:3000/myPlants/${params.email}`)
+                loader: ({ params }) => fetch(`http://localhost:3000/myPlants/${params.email}`),
+                HydrateFallback: Loader
             },
             {
                 path: 'update/:id',
                 Component: Update,
-                loader: ({ params }) => fetch(`http://localhost:3000/plant/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:3000/plant/${params.id}`),
+                HydrateFallback: Loader
             }
         ]
     }

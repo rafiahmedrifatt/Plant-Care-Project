@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import Banner from '../components/HomeComponents/banner/Banner';
+import NewPlants from '../components/HomeComponents/NewPlants/NewPlants';
+import Loader from '../components/loader/Loader';
 
 const Home = () => {
+    const dataPromise = fetch('http://localhost:3000/plants').then(res => res.json())
     return (
         <div>
-            <h1>tHIS IS HOME</h1>
+            <Banner />
+            <Suspense fallback={Loader}>
+                <NewPlants dataPromise={dataPromise} />
+            </Suspense>
         </div>
     );
 };

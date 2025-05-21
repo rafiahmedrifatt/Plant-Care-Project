@@ -13,7 +13,7 @@ const Navbar = () => {
         </>
 
     return (
-        <div className="navbar bg-white text-black shadow-sm">
+        <div className="navbar bg-white text-black shadow-sm h-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -33,7 +33,7 @@ const Navbar = () => {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <img src="https://i.ibb.co/kgc03rhW/Black-and-Green-Typographical-Green-Energy-Logo.jpg" className='h-20 w-60 object-cover' alt="" />
+                <img src="https://i.ibb.co/kgc03rhW/Black-and-Green-Typographical-Green-Energy-Logo.jpg" className='w-50' alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-5">
