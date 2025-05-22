@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 
 const Update = () => {
-    const { category, description, health, lastWateredDate, careLevel, nextWateringDate, photo, plantName, _id } = useLoaderData()
+    const { category, description, health, lastWateredDate, careLevel, waterFrequency, nextWateringDate, photo, plantName, _id } = useLoaderData()
     console.log(category);
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -85,6 +85,14 @@ const Update = () => {
 
             <label className="label">Next Watering Date</label>
             <input type="date" name='nextWateringDate' defaultValue={nextWateringDate} className="input w-full" />
+
+            <label className="label">Water Frequency</label>
+            <select type="text" className="select w-full" name='waterFrequency' defaultValue={waterFrequency} >
+                <option disabled={true}>Select Water Frequency</option>
+                <option value="everyday">Everyday</option>
+                <option value="every 2 days">Every 2 days</option>
+                <option value="every 3 days">Every 3 days</option>
+            </select>
 
             <label className="label">Care Level</label>
             <select type="text" defaultValue={careLevel} className="select w-full" name='careLevel' placeholder="Category" list="browsers" >

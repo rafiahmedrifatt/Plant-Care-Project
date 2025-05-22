@@ -5,7 +5,7 @@ const AllPlants = () => {
     const plantsData = useLoaderData()
 
     return (
-        <div className="overflow-x-auto w-[70vw] mx-auto my-10">
+        <div className="overflow-x-auto md:w-[70vw] mx-auto my-10">
             <table className="table">
                 <thead>
                     <tr>

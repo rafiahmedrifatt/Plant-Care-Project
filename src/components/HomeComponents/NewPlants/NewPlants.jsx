@@ -12,10 +12,10 @@ const NewPlants = ({ dataPromise }) => {
     return (
         <>
             <h1 className='text-2xl text-center font-bold my-10'>New Trees</h1>
-            <div className='w-8/12 mx-auto grid grid-cols-2 gap-10'>
+            <div className='w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10'>
                 {
                     plants.map(data =>
-                        <div key={data._id} className="card card-side shadow-sm">
+                        <div key={data._id} className="card md:card-side shadow-sm">
                             <figure className='md:w-40'>
                                 <img
                                     src={data.photo}

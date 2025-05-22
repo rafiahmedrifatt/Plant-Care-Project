@@ -6,6 +6,7 @@ import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
     const { user, logOut } = use(AuthContext)
+    console.log(user);
     const navLinks =
         <>
             <motion.a initial={{ scale: 0 }} animate={{ scale: 1 }}><NavLink to="/">Home</NavLink></motion.a>
@@ -72,7 +73,7 @@ const Navbar = () => {
                                 whileTap={{ scale: 0.8 }}
                                 whileHover={{ scale: 0.8 }}
                             >
-                                Register
+                                Log Out
                             </motion.a>
                         </motion.button>
                     </div> :

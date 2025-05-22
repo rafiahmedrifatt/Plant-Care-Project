@@ -1,47 +1,82 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Register = () => {
-    const { createUser, user } = use(AuthContext)
-    console.log(user);
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
+    console.log(error);
+    const { createUser, setLoading, update } = use(AuthContext)
 
     const handleRegister = (e) => {
         console.log('btn clicked');
         e.preventDefault()
         const form = e.target;
         const data = new FormData(form)
-        const { email, password, ...rest } = Object.fromEntries(data.entries())
-        createUser(email, password)
-            .then(() => {
-                fetch('http://localhost:3000/users', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(rest)
+        const { name, email, password, photoUrl, } = Object.fromEntries(data.entries())
+        const userDataForDB = { email, name, photoUrl }
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+        if (password.length < 6) {
+            setError('Password Needs to be more then 6 character')
+            setLoading(false)
+            return;
+        } else if (!passwordRegex.test(password)) {
+            setLoading(false)
+            setError('Must contain uppercase, lowercase letters, and be at least 6 characters long')
+            return;
+        } else {
+            setError("")
+            createUser(email, password)
+                .then(() => {
+                    fetch('http://localhost:3000/users', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(userDataForDB)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                update(name, photoUrl).then(() => {
+                                    navigate("/")
+                                    Swal.fire({
+                                        icon: "success",
+                                        title: "Success",
+                                        text: "You have registered successfully",
+                                    });
+                                })
+                            }
+                        })
                 })
-                    .then(res => res.json())
-                    .then(data => console.log(data))
-            })
-            .catch(error => console.log(error))
+                .catch(() => {
+                    setLoading(false)
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Email Already in use!",
+                    });
 
+                })
+        }
     }
     return (
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-20">
             <div className="card-body">
                 <form onSubmit={handleRegister} className="fieldset">
                     <label className="label">Name</label>
-                    <input type="text" name='name' className="input" placeholder="Name" />
+                    <input type="text" name='name' className="input" placeholder="Name" required />
                     <label className="label">Email</label>
-                    <input type="email" name='email' className="input" placeholder="Email" />
+                    <input type="email" name='email' className="input" placeholder="Email" required />
                     <label className="label">PhotoUrl</label>
-                    <input type="text" name='photoUrl' className="input" placeholder="Photo URL" />
+                    <input type="text" name='photoUrl' className="input" placeholder="Photo URL" required />
                     <label className="label">Password</label>
-                    <input type="password" name='password' className="input" placeholder="Password" />
+                    <input type="password" name='password' className="input" placeholder="Password" required />
+                    <p className='text-red-500'>{error}</p>
                     <button type='submit' className="btn btn-neutral mt-4">Register</button>
                 </form>
-                <p>Already Registered? <Link to="/login">Login Now</Link></p>
+                <p>Already Registered? <Link className='border-b-2 border-green-700' to="/login">Login Now</Link></p>
             </div>
         </div>
     );

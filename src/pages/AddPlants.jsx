@@ -31,7 +31,7 @@ const AddPlants = () => {
             })
     }
     return (
-        <form onSubmit={handlePlantSubmit} className="fieldset bg-base-200 border-base-300 rounded-box w-lg border p-4 mx-auto my-10">
+        <form onSubmit={handlePlantSubmit} className="fieldset bg-base-200 border-base-300 rounded-box w-full md:w-lg border p-4 mx-auto my-10">
             <legend className="fieldset-legend">ADD PLANTS</legend>
 
             <label className="label">Image URL</label>
@@ -63,6 +63,14 @@ const AddPlants = () => {
                 <option value="easy">Easy</option>
                 <option value="moderate">Moderate</option>
                 <option value="regular">Regular</option>
+            </select>
+
+            <label className="label">Water Frequency</label>
+            <select type="text" className="select w-full" name='waterFrequency' >
+                <option disabled={true}>Select Water Frequency</option>
+                <option value="everyday">Everyday</option>
+                <option value="every 2 days">Every 2 days</option>
+                <option value="every 3 days">Every 3 days</option>
             </select>
 
             <label className="label">Health Status</label>
