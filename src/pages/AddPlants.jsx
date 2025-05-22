@@ -11,7 +11,7 @@ const AddPlants = () => {
         const formData = new FormData(form)
         const objFormData = Object.fromEntries(formData.entries())
         console.log(objFormData);
-        fetch("http://localhost:3000/plants", {
+        fetch("https://plant-care-server-kappa.vercel.app/plants", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -60,9 +60,9 @@ const AddPlants = () => {
             <label className="label">Care Level</label>
             <select type="text" defaultValue="Select Care Level" className="select w-full" name='careLevel' placeholder="Category" list="browsers" >
                 <option disabled={true}>Select Care Level</option>
-                <option value="easy">Easy</option>
-                <option value="moderate">Moderate</option>
-                <option value="regular">Regular</option>
+                <option value="1">Easy</option>
+                <option value="2">Moderate</option>
+                <option value="3">Regular</option>
             </select>
 
             <label className="label">Water Frequency</label>

@@ -13,6 +13,7 @@ const AllPlants = () => {
                         <th>Plant Name</th>
                         <th>Category</th>
                         <th>Watering Frequency</th>
+                        <th>Care Level</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -23,7 +24,8 @@ const AllPlants = () => {
                                 <td>{index + 1}</td>
                                 <td>{plant.plantName}</td>
                                 <td>{plant.category}</td>
-                                <td>Blue</td>
+                                <td>{plant.waterFrequency}</td>
+                                <td>{plant.careLevel}</td>
                                 <td><Link to={`/plant/${plant._id}`} className='btn btn-success w-full'>Details</Link></td>
                             </tr>
                         )

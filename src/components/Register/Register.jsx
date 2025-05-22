@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const [error, setError] = useState(null)
     const navigate = useNavigate()
+    const [error, setError] = useState(null)
     console.log(error);
     const { createUser, setLoading, update } = use(AuthContext)
 
@@ -29,7 +29,7 @@ const Register = () => {
             setError("")
             createUser(email, password)
                 .then(() => {
-                    fetch('http://localhost:3000/users', {
+                    fetch('https://plant-care-server-kappa.vercel.app/users', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -39,8 +39,8 @@ const Register = () => {
                         .then(res => res.json())
                         .then(data => {
                             if (data.insertedId) {
+                                navigate("/")
                                 update(name, photoUrl).then(() => {
-                                    navigate("/")
                                     Swal.fire({
                                         icon: "success",
                                         title: "Success",

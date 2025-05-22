@@ -28,7 +28,7 @@ const Update = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/update/${_id}`, {
+                fetch(`https://plant-care-server-kappa.vercel.app/update/${_id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -97,9 +97,9 @@ const Update = () => {
             <label className="label">Care Level</label>
             <select type="text" defaultValue={careLevel} className="select w-full" name='careLevel' placeholder="Category" list="browsers" >
                 <option disabled={true}>Select Care Level</option>
-                <option value="easy">Easy</option>
-                <option value="moderate">Moderate</option>
-                <option value="regular">Regular</option>
+                <option value="1">Easy</option>
+                <option value="2">Moderate</option>
+                <option value="3">Regular</option>
             </select>
 
             <label className="label">Health Status</label>
