@@ -1,16 +1,19 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 import { Tooltip } from 'react-tooltip';
+import { motion } from "framer-motion"
+import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
     const { user, logOut } = use(AuthContext)
     const navLinks =
         <>
-            <Link to="/">Home</Link>
-            <Link to="/allPlants">All Plants</Link>
-            <Link to="/addPlants">Add Plants</Link>
-            <Link to={`/myPlants/${user?.email}`}>My Plants</Link>
+            <motion.a initial={{ scale: 0 }} animate={{ scale: 1 }}><NavLink to="/">Home</NavLink></motion.a>
+            <motion.a whileTap={{ scale: 0.8 }}><NavLink to="/allPlants">All Plants</NavLink></motion.a>
+            <motion.a whileTap={{ scale: 0.8 }}><NavLink to="/addPlants">Add Plants</NavLink></motion.a>
+            {
+                user && user.email ? <motion.a whileTap={{ scale: 0.8 }}><NavLink to={`/myPlants/${user?.email}`}>My Plants</NavLink></motion.a> : ""
+            }
         </>
 
     const handleLogOut = () => {
@@ -32,7 +35,7 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                Plant Tracker
+                <Link to='/' className='text-xl font-extrabold'>Plant Tracker</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-5">
@@ -41,28 +44,54 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user ? <div className='flex gap-5'>
+                    user ? <div className='flex items-center gap-5'>
                         <a
                             id="my-tooltip-anchor"
                         >
+                            <motion.div
 
-                            <div className="avatar">
+                                className="avatar"
+                            >
                                 <div className="w-12 rounded-full">
                                     <img src={user.photoURL ? user.photoURL : "https://img.daisyui.com/images/profile/demo/yellingcat@192.webp"} />
                                 </div>
-                            </div>
+                            </motion.div>
                         </a>
                         <Tooltip
                             anchorSelect="#my-tooltip-anchor"
                             content={user.displayName ? user.displayName : user.email}
-                            place="bottom"
+                            place="left"
                         />
 
-                        <button onClick={handleLogOut}>LogOut</button>
+                        <motion.button
+                            whileTap={{ scale: 0.8 }}
+                            onClick={handleLogOut}
+                            className='btn btn-success'
+                        >
+                            <motion.a
+                                whileTap={{ scale: 0.8 }}
+                                whileHover={{ scale: 0.8 }}
+                            >
+                                Register
+                            </motion.a>
+                        </motion.button>
                     </div> :
-                        <button className='btn '>
-                            <Link to="/login">Login</Link> / <Link to="/register">Register</Link>
-                        </button>
+                        <motion.div
+
+                            className='btn btn-success'
+                        >
+                            <motion.a
+                                whileTap={{ scale: 0.8 }}
+                                whileHover={{ scale: 0.8 }}
+                            >
+                                <NavLink className='py-5' to="/login">Login</NavLink>
+                            </motion.a> | <motion.a
+                                whileTap={{ scale: 0.8 }}
+                                whileHover={{ scale: 0.8 }}
+                            >
+                                <NavLink className='py-5' to="/register">Register</NavLink>
+                            </motion.a>
+                        </motion.div>
                 }
             </div>
 

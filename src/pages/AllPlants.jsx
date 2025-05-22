@@ -5,7 +5,7 @@ const AllPlants = () => {
     const plantsData = useLoaderData()
 
     return (
-        <div className="overflow-x-auto w-[70vw] mx-auto">
+        <div className="overflow-x-auto w-[70vw] mx-auto my-10">
             <table className="table">
                 <thead>
                     <tr>
@@ -24,7 +24,7 @@ const AllPlants = () => {
                                 <td>{plant.plantName}</td>
                                 <td>{plant.category}</td>
                                 <td>Blue</td>
-                                <td><Link to={`/plant/${plant._id}`} className='btn btn-accent w-full'>Details</Link></td>
+                                <td><Link to={`/plant/${plant._id}`} className='btn btn-success w-full'>Details</Link></td>
                             </tr>
                         )
                     }

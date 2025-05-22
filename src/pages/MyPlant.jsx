@@ -35,7 +35,7 @@ const MyPlant = () => {
         });
     }
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto my-10">
             <table className="table">
                 <thead>
                     <tr>

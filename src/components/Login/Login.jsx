@@ -1,9 +1,11 @@
 import React, { use } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
+import { motion } from 'framer-motion';
+import Swal from 'sweetalert2';
 
 const Login = () => {
-    const { signIn, google } = use(AuthContext)
+    const { signIn, google, setLoading } = use(AuthContext)
     const location = useLocation()
     const navigate = useNavigate();
 
@@ -16,10 +18,19 @@ const Login = () => {
         console.log(password, email);
         signIn(email, password)
             .then(() => navigate(location.state ? location.state : '/'))
-            .catch(err => console.log(err))
+            .catch(() => {
+                setLoading(false)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops... invalid credential",
+                    text: "Email or Password is not Correct!"
+                })
+            })
     }
     return (
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-20">
+        <div
+            className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-20"
+        >
             <div className="card-body">
                 <form onSubmit={handleSubmit} className="fieldset">
                     <label className="label">Email</label>
@@ -28,7 +39,7 @@ const Login = () => {
                     <input type="password" className="input" name='password' placeholder="Password" />
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button type="submit" className="btn btn-neutral mt-4">Login</button>
-                    <p>Don't have account? <Link to="/register">Register Now</Link></p>
+                    <p>Don't have account? <Link className='border-b-2 border-green-700' to="/register">Register Now</Link></p>
                 </form>
                 <div className='flex flex-col gap-3'>
                     <button onClick={() => google()} className="btn bg-white text-black border-[#e5e5e5] w-full">

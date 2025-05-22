@@ -31,7 +31,7 @@ const NewLetter = () => {
                     </label>
                     <div className="validator-hint hidden">Enter valid email address</div>
                 </div>
-                <button className="btn btn-neutral join-item">Join</button>
+                <button className="btn btn-outline btn-success join-item">Join</button>
             </div>
         </div>
     );

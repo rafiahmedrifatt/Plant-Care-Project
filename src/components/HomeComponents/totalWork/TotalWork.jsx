@@ -2,7 +2,7 @@ import React from 'react';
 
 const TotalWork = () => {
     return (
-        <div className='bg-[url(https://i.postimg.cc/Y0wChZbn/jake-nackos-C2-PCa6-Dhl-YE-unsplash.jpg)] h-[65vh] bg-brightness-50'>
+        <div className='bg-[url(https://i.postimg.cc/Y0wChZbn/jake-nackos-C2-PCa6-Dhl-YE-unsplash.jpg)] h-[65vh] bg-brightness-50 text-white'>
             <div className='flex flex-col md:flex-row items-end w-[65vw] mx-auto h-[60vh] justify-center'>
                 <div className='mb-10'>
                     <p className='text-sm'>Our Facts</p>

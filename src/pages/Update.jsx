@@ -3,13 +3,13 @@ import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 
 const Update = () => {
-    const { category, description, health, lastWateredDate, nextWateringDate, photo, plantName, _id } = useLoaderData()
+    const { category, description, health, lastWateredDate, careLevel, nextWateringDate, photo, plantName, _id } = useLoaderData()
+    console.log(category);
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
         const formData = new FormData(form)
         const dataObj = Object.fromEntries(formData.entries())
-
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -37,6 +37,7 @@ const Update = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
+                        e.target.reset()
                         if (data.modifiedCount == 1) {
                             swalWithBootstrapButtons.fire({
                                 title: "Updated!",
@@ -57,9 +58,6 @@ const Update = () => {
                 });
             }
         });
-
-
-
     }
     return (
         <form onSubmit={handleSubmit} className="fieldset bg-base-200 border-base-300 rounded-box w-lg border p-4 mx-auto">
@@ -72,12 +70,12 @@ const Update = () => {
             <input type="text" className="input w-full" name='plantName' placeholder='Plants Name' defaultValue={plantName} />
 
             <label className="label">Category</label>
-            <input type="text" className="input w-full" defaultValue={category} name='category' placeholder="Category" list="browsers" />
-            <datalist id="browsers">
-                <option value="succulent">succulent</option>
-                <option value="fern">fern</option>
-                <option value="flowering">flowering</option>
-            </datalist>
+            <select type="text" className="select w-full" name='category' defaultValue={category} placeholder="Category" list="browsers" >
+                <option disabled={true}>Pick a Category</option>
+                <option value="succulent">Succulent</option>
+                <option value="fern">Fern</option>
+                <option value="flowering">Flowering</option>
+            </select>
 
             <label className="label">Description</label>
             <input type="text" placeholder="Description" defaultValue={description} name='description' className="input w-full" />
@@ -87,6 +85,14 @@ const Update = () => {
 
             <label className="label">Next Watering Date</label>
             <input type="date" name='nextWateringDate' defaultValue={nextWateringDate} className="input w-full" />
+
+            <label className="label">Care Level</label>
+            <select type="text" defaultValue={careLevel} className="select w-full" name='careLevel' placeholder="Category" list="browsers" >
+                <option disabled={true}>Select Care Level</option>
+                <option value="easy">Easy</option>
+                <option value="moderate">Moderate</option>
+                <option value="regular">Regular</option>
+            </select>
 
             <label className="label">Health Status</label>
             <input type="text" name='health' defaultValue={health} className="input w-full" placeholder="Health Status" />
