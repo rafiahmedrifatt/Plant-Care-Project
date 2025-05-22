@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Update = () => {
     const { category, description, health, lastWateredDate, nextWateringDate, photo, plantName, _id } = useLoaderData()
@@ -8,15 +9,56 @@ const Update = () => {
         const form = e.target;
         const formData = new FormData(form)
         const dataObj = Object.fromEntries(formData.entries())
-        fetch(`http://localhost:3000/update/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
+
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
             },
-            body: JSON.stringify(dataObj)
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, update it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3000/update/${_id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dataObj)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount == 1) {
+                            swalWithBootstrapButtons.fire({
+                                title: "Updated!",
+                                text: "Your file has been updated.",
+                                icon: "success"
+                            });
+                        }
+                    })
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "Your file is not updated!)",
+                    icon: "error"
+                });
+            }
+        });
+
+
 
     }
     return (

@@ -1,9 +1,11 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
     const { signIn, google } = use(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         console.log("clicked");
@@ -12,7 +14,9 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(password, email);
-        signIn(email, password).then((user) => console.log(user)).catch(err => console.log(err))
+        signIn(email, password)
+            .then(() => navigate(location.state ? location.state : '/'))
+            .catch(err => console.log(err))
     }
     return (
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-20">
