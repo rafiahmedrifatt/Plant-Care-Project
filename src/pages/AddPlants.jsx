@@ -11,7 +11,7 @@ const AddPlants = () => {
         const formData = new FormData(form)
         const objFormData = Object.fromEntries(formData.entries())
         console.log(objFormData);
-        fetch("http://localhost:3000/plants", {
+        fetch("https://plant-care-server-kappa.vercel.app/plants", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

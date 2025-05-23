@@ -39,25 +39,25 @@ export const router = createBrowserRouter([
             {
                 path: 'allPlants',
                 Component: AllPlants,
-                loader: () => fetch('http://localhost:3000/plants'),
+                loader: () => fetch('https://plant-care-server-kappa.vercel.app/plants'),
                 HydrateFallback: Loader
             },
             {
                 path: 'plant/:id',
                 element: <PrivateRoute><PlantDetails /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/plant/${params.id}`),
+                loader: ({ params }) => fetch(`https://plant-care-server-kappa.vercel.app/plant/${params.id}`),
                 HydrateFallback: Loader
             },
             {
                 path: 'myPlants/:email',
                 element: <PrivateRoute><MyPlant /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/myPlants/${params.email}`),
+                loader: ({ params }) => fetch(`https://plant-care-server-kappa.vercel.app/myPlants/${params.email}`),
                 HydrateFallback: Loader
             },
             {
                 path: 'update/:id',
                 element: <PrivateRoute><Update /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/plant/${params.id}`),
+                loader: ({ params }) => fetch(`https://plant-care-server-kappa.vercel.app/plant/${params.id}`),
                 HydrateFallback: Loader
             }
         ]

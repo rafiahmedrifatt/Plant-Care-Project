@@ -7,11 +7,11 @@ import TotalWork from '../components/HomeComponents/totalWork/TotalWork';
 import NewLetter from '../components/HomeComponents/newsletter/NewLetter';
 
 const Home = () => {
-    const dataPromise = fetch('http://localhost:3000/plants').then(res => res.json())
+    const dataPromise = fetch('https://plant-care-server-kappa.vercel.app/plants').then(res => res.json())
     return (
         <div>
             <Banner />
-            <Suspense fallback={Loader}>
+            <Suspense fallback={<Loader />}>
                 <NewPlants dataPromise={dataPromise} />
             </Suspense>
             <PrevWork />

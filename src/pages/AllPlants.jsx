@@ -7,7 +7,7 @@ const AllPlants = () => {
     const handleSelect = () => {
         const id = document.getElementById("select")
         console.log(typeof id?.value);
-        fetch(`http://localhost:3000/plants/${parseFloat(id?.value)}`)
+        fetch(`https://plant-care-server-kappa.vercel.app/plants/${parseFloat(id?.value)}`)
             .then(res => res.json())
             .then(data => setPlants(data))
 
