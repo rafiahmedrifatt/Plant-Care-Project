@@ -9,11 +9,11 @@ const Navbar = () => {
     console.log(user);
     const navLinks =
         <>
-            <motion.a initial={{ scale: 0 }} animate={{ scale: 1 }}><NavLink to="/">Home</NavLink></motion.a>
-            <motion.a whileTap={{ scale: 0.8 }}><NavLink to="/allPlants">All Plants</NavLink></motion.a>
-            <motion.a whileTap={{ scale: 0.8 }}><NavLink to="/addPlants">Add Plants</NavLink></motion.a>
+            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}><NavLink to="/">Home</NavLink></motion.div>
+            <motion.div whileTap={{ scale: 0.8 }}><NavLink to="/allPlants">All Plants</NavLink></motion.div>
+            <motion.div whileTap={{ scale: 0.8 }}><NavLink to="/addPlants">Add Plants</NavLink></motion.div>
             {
-                user && user.email ? <motion.a whileTap={{ scale: 0.8 }}><NavLink to={`/myPlants/${user?.email}`}>My Plants</NavLink></motion.a> : ""
+                user && user.email ? <motion.div whileTap={{ scale: 0.8 }}><NavLink to={`/myPlants/${user?.email}`}>My Plants</NavLink></motion.div> : ""
             }
         </>
 

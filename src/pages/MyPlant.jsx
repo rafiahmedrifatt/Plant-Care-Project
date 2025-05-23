@@ -16,7 +16,7 @@ const MyPlant = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://plant-care-server-kappa.vercel.app/plant/${id}`, {
+                fetch(`http://localhost:3000/plant/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -35,46 +35,58 @@ const MyPlant = () => {
         });
     }
     return (
-        <div className="overflow-x-auto my-10">
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Next Watering Date</th>
-                        <th>Last Watered Date</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        myPlants.map(plant => <tr key={plant._id}>
-                            <td >
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle h-12 w-12">
-                                            <img
-                                                src={plant.photo}
-                                                alt="Avatar Tailwind CSS Component" />
+        <div>
+            {myPlants.length === 0
+                ?
+                <div className='h-[60vh] flex flex-col justify-center items-center gap-5'>
+                    <h1 className='text-4xl text-green-500'>You have not added any plants yet!</h1>
+                    <Link className='btn btn-success' to='/addPlants'>Add Plant Now!</Link>
+                </div>
+                :
+                <div className="overflow-x-auto my-10">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Next Watering Date</th>
+                                <th>Last Watered Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                myPlants.map(plant => <tr key={plant._id}>
+                                    <td >
+                                        <div className="flex items-center gap-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle h-12 w-12">
+                                                    <img
+                                                        src={plant.photo}
+                                                        alt="Avatar Tailwind CSS Component" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div className="font-bold">{plant.plantName}</div>
+                                                <div className="text-sm opacity-50">{plant.category}</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <div className="font-bold">{plant.plantName}</div>
-                                        <div className="text-sm opacity-50">{plant.category}</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                {plant.nextWateringDate}
-                            </td>
-                            <td>{plant.lastWateredDate}</td>
-                            <th>
-                                <Link to={`/update/${plant._id}`} className="btn btn-ghost btn-xs">Update</Link>
-                                <button onClick={() => handleDelete(plant._id)} className="btn btn-ghost btn-xs">Delete</button>
-                            </th>
-                        </tr>)
-                    }
-                </tbody>
-            </table>
+                                    </td>
+                                    <td>
+                                        {plant.nextWateringDate}
+                                    </td>
+                                    <td>{plant.lastWateredDate}</td>
+                                    <th>
+                                        <Link to={`/update/${plant._id}`} className="btn btn-ghost btn-xs">Update</Link>
+                                        <button onClick={() => handleDelete(plant._id)} className="btn btn-ghost btn-xs">Delete</button>
+                                    </th>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+
+
         </div>
     );
 };

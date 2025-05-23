@@ -28,7 +28,7 @@ const Update = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://plant-care-server-kappa.vercel.app/update/${_id}`, {
+                fetch(`http://localhost:3000/update/${_id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

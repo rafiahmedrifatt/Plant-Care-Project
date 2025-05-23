@@ -29,7 +29,7 @@ const Register = () => {
             setError("")
             createUser(email, password)
                 .then(() => {
-                    fetch('https://plant-care-server-kappa.vercel.app/users', {
+                    fetch('http://localhost:3000/users', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
