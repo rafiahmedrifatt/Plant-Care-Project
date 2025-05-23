@@ -6,8 +6,12 @@ import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
     const { user, logOut } = use(AuthContext)
-    const [theme, setTheme] = useState("light")
-    console.log(theme);
+    const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : "light")
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+        const localTheme = localStorage.getItem('theme');
+        document.querySelector('html').setAttribute('data-theme', localTheme)
+    }, [theme])
     const navLinks =
         <>
             <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}><NavLink to="/">Home</NavLink></motion.div>
