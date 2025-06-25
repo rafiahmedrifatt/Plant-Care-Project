@@ -10,14 +10,13 @@ const NewPlants = ({ dataPromise }) => {
         const slicedPlants = plants.slice(0, 6)
         setPlants(slicedPlants)
     }
-    console.log(plants);
     return (
         <>
-            <h1 className='text-2xl text-center font-bold my-10'>New Trees</h1>
+            <h1 className='text-2xl text-center font-bold mb-10 -mt-10'>New Trees</h1>
             <div className='w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10'>
                 {
                     plants.map(data =>
-                        <div className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
+                        <div key={data._id} className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
                             {/* Gradient overlay for visual depth */}
                             <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
@@ -66,7 +65,7 @@ const NewPlants = ({ dataPromise }) => {
                                     {/* Action Button */}
                                     <div className="flex items-center justify-between">
                                         <a
-                                            href={`#plant/${data._id}`}
+                                            href={`plant/${data._id}`}
                                             className="inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:from-green-700 hover:to-emerald-700 transform transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                                             aria-label={`View details for ${data.plantName}`}
                                         >

@@ -50,27 +50,6 @@ export default function AboutUs() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
-            {/* Hero Section */}
-            <div className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-emerald-600/20"></div>
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-                    <div className={`text-center transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                        <div className="flex justify-center mb-8">
-                            <div className="p-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-2xl">
-                                <Leaf className="w-16 h-16 text-white animate-pulse" />
-                            </div>
-                        </div>
-                        <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-6">
-                            PlantCare Hub
-                        </h1>
-                        <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                            Your digital companion for nurturing thriving plants. Create personalized care plans,
-                            track growth, and join a community of passionate plant lovers.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
             {/* Mission Section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -168,29 +147,6 @@ export default function AboutUs() {
                                 <div className="text-green-100 text-lg">{stat.label}</div>
                             </div>
                         ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* CTA Section */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-12 text-center border border-green-100">
-                    <div className="max-w-3xl mx-auto">
-                        <h2 className="text-4xl font-bold text-gray-800 mb-6">
-                            Ready to Start Your Plant Journey?
-                        </h2>
-                        <p className="text-xl text-gray-600 mb-8">
-                            Join our community today and discover the joy of successful plant parenting.
-                            Your green thumb is just a click away!
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                                Get Started Free
-                            </button>
-                            <button className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-600 hover:text-white transition-all duration-300">
-                                Learn More
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
