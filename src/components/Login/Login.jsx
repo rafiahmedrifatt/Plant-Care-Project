@@ -1,7 +1,6 @@
 import React, { use } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
-import { motion } from 'framer-motion';
 import Swal from 'sweetalert2';
 
 const Login = () => {
@@ -30,6 +29,7 @@ const Login = () => {
 
     const handleGoogleLogin = () => {
         google().then(() => {
+            setLoading(false)
             navigate(location.state ? location.state : '/')
         })
     }
