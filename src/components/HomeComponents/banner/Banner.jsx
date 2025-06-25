@@ -3,7 +3,7 @@ import React from 'react';
 const Banner = () => {
     return (
         <div className="carousel w-full h-[90vh] text-white">
-            <div id="slide1" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/zXSLW4Gh/priscilla-du-preez-JCZ2p-E-Szpw-unsplash.jpg)] bg-cover">
+            <div id="slide1" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/zXSLW4Gh/priscilla-du-preez-JCZ2p-E-Szpw-unsplash.jpg)] bg-cover h-[75vh]">
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
 
                     <a href="#slide4" className="btn btn-circle">❮</a>
@@ -14,7 +14,7 @@ const Banner = () => {
                     <a href="#slide2" className="btn btn-circle">❯</a>
                 </div>
             </div>
-            <div id="slide2" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/BvZ2X45t/freddie-marriage-Ucf-KYTan-LU-unsplash.jpg)] bg-cover">
+            <div id="slide2" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/BvZ2X45t/freddie-marriage-Ucf-KYTan-LU-unsplash.jpg)] bg-cover h-[75vh]">
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <a href="#slide1" className="btn btn-circle">❮</a>
                     <div className='w-[50%] text-center flex flex-col gap-3'>
@@ -24,7 +24,7 @@ const Banner = () => {
                     <a href="#slide3" className="btn btn-circle">❯</a>
                 </div>
             </div>
-            <div id="slide3" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/t70gPtL2/vadim-kaipov-8-ZELrod-Sv-Tc-unsplash.jpg)] bg-cover">
+            <div id="slide3" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/t70gPtL2/vadim-kaipov-8-ZELrod-Sv-Tc-unsplash.jpg)] bg-cover h-[75vh]">
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <a href="#slide2" className="btn btn-circle">❮</a>
                     <div className='w-[50%] text-center flex flex-col gap-3'>
@@ -34,7 +34,7 @@ const Banner = () => {
                     <a href="#slide4" className="btn btn-circle">❯</a>
                 </div>
             </div>
-            <div id="slide4" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/TPTpC0hs/chris-lawton-cfl3-Fij-Ygl-M-unsplash.jpg)] bg-cover">
+            <div id="slide4" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/TPTpC0hs/chris-lawton-cfl3-Fij-Ygl-M-unsplash.jpg)] bg-cover h-[75vh]">
 
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <a href="#slide3" className="btn btn-circle">❮</a>

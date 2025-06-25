@@ -10,6 +10,7 @@ import MyPlant from "../pages/MyPlant";
 import Update from "../pages/Update";
 import Loader from "../components/loader/Loader";
 import PrivateRoute from "./PrivateRoute";
+import AboutUs from "../pages/AboutUs";
 
 
 export const router = createBrowserRouter([
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
             {
                 path: 'register',
                 Component: Register
+            },
+            {
+                path: 'aboutUs',
+                Component: AboutUs
             },
             {
                 path: 'addPlants',
