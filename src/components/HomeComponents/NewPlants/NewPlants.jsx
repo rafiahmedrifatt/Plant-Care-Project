@@ -12,7 +12,7 @@ const NewPlants = ({ dataPromise }) => {
     }
     return (
         <>
-            <h1 className='text-2xl text-center font-bold mb-10 -mt-10'>New Trees</h1>
+            <h1 className='text-4Zxl text-center font-bold mb-10 -mt-10'>New Trees</h1>
             <div className='w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10'>
                 {
                     plants.map(data =>
