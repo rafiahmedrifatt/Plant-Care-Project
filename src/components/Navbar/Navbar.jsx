@@ -21,7 +21,7 @@ const Navbar = () => {
         { to: "/allPlants", label: "All Plants" },
         { to: "/addPlants", label: "Add Plants" },
         { to: "/aboutUs", label: "About Us" },
-        ...(user && user.email ? [{ to: `/myPlants/${user?.email}`, label: "My Plants" }] : [])
+        ...(user && user.email ? [{ to: `/myPlants/${user?.email}`, label: "My Plants" }, { to: '/dashboard', label: 'Dashboard' }] : [])
     ]
 
     const handleLogOut = () => {
@@ -34,7 +34,7 @@ const Navbar = () => {
 
     return (
         <nav className="bg-white shadow-md sticky top-0 z-50">
-            <div className="max-w-6xl mx-auto px-4">
+            <div className="w-full px-4">
                 <div className="flex justify-between items-center h-16">
 
                     {/* Logo Section */}

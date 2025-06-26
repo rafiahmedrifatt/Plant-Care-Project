@@ -11,6 +11,10 @@ import Update from "../pages/Update";
 import Loader from "../components/loader/Loader";
 import PrivateRoute from "./PrivateRoute";
 import AboutUs from "../pages/AboutUs";
+import DashBoard from "../pages/DashBoard";
+import PlantsDashboard from "../components/DashboardComponents/PlantsDashboard";
+import UsersDashboard from "../components/DashboardComponents/UsersDashboard";
+import DashBoardData from "../components/DashboardComponents/DashBoardData";
 
 
 export const router = createBrowserRouter([
@@ -64,6 +68,24 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><Update /></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://plant-care-server-kappa.vercel.app/plant/${params.id}`),
                 HydrateFallback: Loader
+            },
+            {
+                path: '/dashboard',
+                Component: DashBoard,
+                children: [
+                    {
+                        index: true,
+                        Component: DashBoardData
+                    },
+                    {
+                        path: '/dashboard/plants',
+                        Component: PlantsDashboard
+                    },
+                    {
+                        path: '/dashboard/users',
+                        Component: UsersDashboard
+                    },
+                ]
             }
         ]
     }

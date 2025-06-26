@@ -3,18 +3,17 @@ import { Link } from 'react-router';
 
 const Logo = () => {
     return (
-        <div>
-            <Link
-                to="/"
-                className="flex items-center gap-0 hover:opacity-80 transition-opacity duration-200"
-            >
-                <img
-                    src="https://i.ibb.co/ZzVdFT4z/Adobe-Express-file.png"
-                    alt="Plant Care Logo"
-                    className="h-20 w-20 pt-1 object-contain"
-                />
-            </Link>
-        </div>
+        <Link to='/'>
+            <svg height="50" width="200" className="fill-current text-green-500">
+                <text x="0" y="40" fontFamily="Verdana" fontSize="35" fontWeight="bold">
+                    PLANT
+                </text>
+                <text x="105" y="40" fontFamily="Verdana" fontSize="35" fill="gray">
+                    CARE
+                </text>
+            </svg>
+        </Link>
+
     );
 };
 

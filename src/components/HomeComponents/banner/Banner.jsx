@@ -6,7 +6,7 @@ const Banner = () => {
 
 
             {/* Slide 1 */}
-            <div id="slide1" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/BvZ2X45t/freddie-marriage-Ucf-KYTan-LU-unsplash.jpg)] bg-cover bg-center h-[75vh]">
+            <div id="slide1" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/t70gPtL2/vadim-kaipov-8-ZELrod-Sv-Tc-unsplash.jpg)] bg-cover bg-center h-[75vh]">
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black/30"></div>
 
@@ -25,7 +25,7 @@ const Banner = () => {
             </div>
 
             {/* Slide 2 */}
-            <div id="slide2" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/t70gPtL2/vadim-kaipov-8-ZELrod-Sv-Tc-unsplash.jpg)] bg-cover bg-center h-[75vh]">
+            <div id="slide2" className="carousel-item relative w-full bg-[url(https://i.postimg.cc/BvZ2X45t/freddie-marriage-Ucf-KYTan-LU-unsplash.jpg)] bg-cover bg-center h-[75vh]">
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black/30"></div>
 
