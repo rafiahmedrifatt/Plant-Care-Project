@@ -20,7 +20,6 @@ const Navbar = () => {
     const navLinks = [
         { to: "/", label: "Home" },
         { to: "/allPlants", label: "All Plants" },
-        { to: "/addPlants", label: "Add Plants" },
         { to: "/aboutUs", label: "About Us" },
         ...(user && user.email ? [{ to: `/myPlants/${user?.email}`, label: "My Plants" }, { to: '/dashboard', label: 'Dashboard' }] : [])
     ]

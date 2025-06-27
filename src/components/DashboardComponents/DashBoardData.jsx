@@ -1,19 +1,15 @@
-import React, { use, useState } from 'react';
+import React, { use } from 'react';
 import { User, Calendar, Mail, MapPin, Leaf, Plus } from 'lucide-react';
 import DashBoard from '../../pages/DashBoard';
 import { AuthContext } from '../../context/AuthContext';
 import { format } from "date-fns";
+import { useLoaderData } from 'react-router';
 
 const DashBoardData = () => {
-    // Demo logged-in user data
+    const data = useLoaderData()
+    console.log(data);
     const { user } = use(AuthContext)
 
-    // User plant stats
-    const [userStats] = useState({
-        totalPlants: 42,
-        plantsThisMonth: 8
-    });
-    console.log(user.photoURL);
 
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
@@ -30,7 +26,7 @@ const DashBoardData = () => {
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="text-sm font-medium text-gray-600">Total Plants</p>
-                            <p className="text-3xl font-bold text-green-600">{userStats.totalPlants}</p>
+                            <p className="text-3xl font-bold text-green-600">{data.length}</p>
                             <p className="text-sm text-green-600 mt-1">Your entire collection</p>
                         </div>
                         <div className="p-3 bg-green-100 rounded-lg">
@@ -39,19 +35,6 @@ const DashBoardData = () => {
                     </div>
                 </div>
 
-                {/* Plants Added This Month */}
-                <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <p className="text-sm font-medium text-gray-600">Added This Month</p>
-                            <p className="text-3xl font-bold text-blue-600">{userStats.plantsThisMonth}</p>
-                            <p className="text-sm text-blue-600 mt-1">New additions</p>
-                        </div>
-                        <div className="p-3 bg-blue-100 rounded-lg">
-                            <Plus className="w-8 h-8 text-blue-600" />
-                        </div>
-                    </div>
-                </div>
             </div>
 
             {/* User Info Card */}
@@ -62,7 +45,7 @@ const DashBoardData = () => {
                     {/* Profile Picture */}
                     <div className="flex-shrink-0">
                         <img
-                            src={user.photoURL}
+                            src={user?.photoURL}
                             className="w-24 h-24 rounded-full object-cover border-4 border-gray-100"
                         />
                     </div>
@@ -70,18 +53,18 @@ const DashBoardData = () => {
                     {/* User Details */}
                     <div className="flex-1 space-y-4">
                         <div>
-                            <h3 className="text-2xl font-bold text-gray-900">{user.displayName}</h3>
+                            <h3 className="text-2xl font-bold text-gray-900">{user?.displayName}</h3>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="flex items-center gap-3 text-gray-600">
                                 <Mail className="w-5 h-5" />
-                                <span>{user.email}</span>
+                                <span>{user?.email}</span>
                             </div>
 
                             <div className="flex items-center gap-3 text-gray-600">
                                 <Calendar className="w-5 h-5" />
-                                <span>Joined {format((user.metadata.creationTime), " dd MMM yyyy")}</span>
+                                <span>Joined {format(Date(user?.metadata.creationTime), " dd MMM yyyy")}</span>
                             </div>
                         </div>
                     </div>

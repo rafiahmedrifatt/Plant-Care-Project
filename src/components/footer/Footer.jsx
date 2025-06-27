@@ -38,9 +38,7 @@ const Footer = () => {
 
                     {/* Logo and Company Name */}
                     <div className="mb-6 md:mb-0">
-                        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-                            <Logo />
-                        </a>
+                        <Logo />
                     </div>
 
                     {/* Navigation Links */}

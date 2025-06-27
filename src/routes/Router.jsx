@@ -71,11 +71,14 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                Component: DashBoard,
+                element: <PrivateRoute>
+                    <DashBoard />
+                </PrivateRoute>,
                 children: [
                     {
                         index: true,
-                        Component: DashBoardData
+                        Component: DashBoardData,
+                        loader: () => fetch('https://plant-care-server-kappa.vercel.app/plants'),
                     },
                     {
                         path: 'myPlants/:email',
