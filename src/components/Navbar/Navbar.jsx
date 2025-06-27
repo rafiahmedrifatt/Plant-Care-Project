@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { Tooltip } from 'react-tooltip';
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion"
 import { Link, NavLink } from 'react-router';
 import Logo from '../Logo/Logo';

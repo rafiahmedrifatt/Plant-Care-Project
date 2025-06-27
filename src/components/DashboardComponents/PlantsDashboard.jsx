@@ -98,7 +98,8 @@ const PlantsDashboard = () => {
         }
     };
 
-    const StatBox = ({ title, value, icon, color, bgColor }) => (
+    // eslint-disable-next-line no-unused-vars
+    const StatBox = ({ title, value, Icon, color, bgColor }) => (
         <div className={`${bgColor} rounded-lg p-6 shadow-sm border border-gray-200`}>
             <div className="flex items-center justify-between">
                 <div>
@@ -106,7 +107,7 @@ const PlantsDashboard = () => {
                     <p className="text-2xl font-bold text-gray-900">{value}</p>
                 </div>
                 <div className={`${color} p-3 rounded-full`}>
-                    <icon className="w-6 h-6 text-white" />
+                    <Icon className="w-6 h-6 text-white" />
                 </div>
             </div>
         </div>
@@ -139,28 +140,28 @@ const PlantsDashboard = () => {
                 <StatBox
                     title="Total Plants"
                     value={totalPlants}
-                    icon={Leaf}
+                    Icon={Leaf}
                     color="bg-green-500"
                     bgColor="bg-white"
                 />
                 <StatBox
                     title="Available"
                     value={availablePlants}
-                    icon={Sprout}
+                    Icon={Sprout}
                     color="bg-blue-500"
                     bgColor="bg-white"
                 />
                 <StatBox
                     title="Low Stock"
                     value={lowStockPlants}
-                    icon={TreePine}
+                    Icon={TreePine}
                     color="bg-yellow-500"
                     bgColor="bg-white"
                 />
                 <StatBox
                     title="Out of Stock"
                     value={outOfStockPlants}
-                    icon={Flower}
+                    Icon={Flower}
                     color="bg-red-500"
                     bgColor="bg-white"
                 />
