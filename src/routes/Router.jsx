@@ -15,12 +15,14 @@ import DashBoard from "../pages/DashBoard";
 import PlantsDashboard from "../components/DashboardComponents/PlantsDashboard";
 import UsersDashboard from "../components/DashboardComponents/UsersDashboard";
 import DashBoardData from "../components/DashboardComponents/DashBoardData";
+import ErrorPage from "../pages/ErrorPage";
 
 
 export const router = createBrowserRouter([
     {
         path: '/',
         Component: MainLayout,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -79,6 +81,7 @@ export const router = createBrowserRouter([
                         index: true,
                         Component: DashBoardData,
                         loader: () => fetch('https://plant-care-server-kappa.vercel.app/plants'),
+                        HydrateFallback: Loader
                     },
                     {
                         path: 'myPlants/:email',
