@@ -1,6 +1,6 @@
 # 🌿 Plant Care Tracker - Category: Mango
 
-**Live URL**: [https://your-website-link.com](https://your-website-link.com)
+**Live URL**: [Live Link](https://sprightly-valkyrie-f311ec.netlify.app/)
 
 Plant Care Tracker is a full-stack, mobile-responsive web application built to help users manage and monitor the care of their indoor and outdoor plants. Designed with a creative "Mango Plant" theme, it functions as a digital gardening assistant where users can add, track, and update care details for their beloved plants.
 
